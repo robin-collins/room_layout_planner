@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Room Layout Planner</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='3' width='26' height='26' fill='none' stroke='%231a73e8' stroke-width='3'/><rect x='8' y='14' width='10' height='10' fill='%238ab4f8'/></svg>" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div class="brand">
+          <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><rect x="3" y="3" width="26" height="26" fill="none" stroke="#1a73e8" stroke-width="3"/><rect x="8" y="14" width="10" height="10" fill="#8ab4f8"/></svg>
+          <span>Room Layout Planner</span>
+          <span class="sep">/</span>
+          <span id="room-title"></span>
+        </div>
+        <div class="actions">
+          <button data-cmd="undo" title="Undo (Ctrl+Z)">↶ Undo</button>
+          <button data-cmd="redo" title="Redo (Ctrl+Y)">↷ Redo</button>
+          <span class="gap"></span>
+          <button data-cmd="new" title="Start a new room">New room</button>
+          <button data-cmd="open" title="Open a saved layout file">Open…</button>
+          <button data-cmd="save" title="Save layout to a file (Ctrl+S)">Save</button>
+          <button data-cmd="export" class="primary" title="Export the finished layout as a PDF">Export PDF</button>
+        </div>
+      </header>
+      <aside id="left" class="panel"></aside>
+      <main id="stage">
+        <svg id="canvas" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div id="hint" class="hint" hidden></div>
+        <div class="zoom">
+          <button data-zoom="in" title="Zoom in">+</button>
+          <button data-zoom="out" title="Zoom out">−</button>
+          <button data-zoom="fit" title="Fit to screen">Fit</button>
+        </div>
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      </main>
+      <aside id="right" class="panel"></aside>
+    </div>
+    <div id="modal-root"></div>
+    <input type="file" id="file-input" accept=".json,application/json" hidden />
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
